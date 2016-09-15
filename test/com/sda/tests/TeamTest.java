@@ -2,8 +2,6 @@ package com.sda.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import com.sda.superheroes.HeroStatistics;
