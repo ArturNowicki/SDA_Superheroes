@@ -1,34 +1,35 @@
 package com.sda.tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
 
 import org.junit.Test;
 
 import com.sda.superheroes.HeroStatistics;
 import com.sda.superheroes.SuperHero;
 import com.sda.superheroes.Villain;
+import com.sda.teams.InvalidHeroTeamException;
 import com.sda.teams.Team;
 import com.sda.teams.TeamType;
 import com.sda.utils.HeroCreator;
 
 public class TeamTest {
 
-	@Test
-	public void testAddHeroToTeamFalse() {
+	@Test(expected = InvalidHeroTeamException.class)
+	public void testAddHeroToTeamFailure() throws InvalidHeroTeamException {
 		Team team = new Team(TeamType.RED);
-		assertFalse(team.addHeroToTeam(HeroCreator.createHeroWithDefaultStats("Artur", TeamType.BLUE)));
+		team.addHeroToTeam(HeroCreator.createHeroWithDefaultStats("Artur", TeamType.BLUE));
 	}
 
 	@Test
-	public void testAddHeroToTeamTrue() {
+	public void testAddHeroToTeamSuccess() throws InvalidHeroTeamException {
 		Team team = new Team(TeamType.RED);
-		assertTrue(team.addHeroToTeam(HeroCreator.createHeroWithDefaultStats("Artur", TeamType.RED)));
+		team.addHeroToTeam(HeroCreator.createHeroWithDefaultStats("Artur", TeamType.RED));
 	}
 
 	@Test
-	public void testGetTeamPower() {
+	public void testGetTeamPower() throws InvalidHeroTeamException {
 		int health1 = 120, health2 = 110;
 		int attack1 = 150, attack2 = 90;
 		int defense1 = 90, defense2 = 160;

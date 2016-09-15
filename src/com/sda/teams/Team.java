@@ -33,16 +33,25 @@ public class Team {
 		return teamSide;
 	}
 
-	public boolean addHeroToTeam(AbstractHero hero) {
+	public void addHeroToTeam(AbstractHero hero) throws InvalidHeroTeamException {
 		if(hero.getTeam().equals(type)) {
 			heroesList.add(hero);
 			updateTeamSide(hero);
-			return true;
 		} else {
-			System.out.println("Cannot add member of other team!");
-			return false;			
+			throw new InvalidHeroTeamException("Cannot add member of other team!");
 		}
 	}
+
+//	public boolean addHeroToTeam(AbstractHero hero) {
+//		if(hero.getTeam().equals(type)) {
+//			heroesList.add(hero);
+//			updateTeamSide(hero);
+//			return true;
+//		} else {
+//			System.out.println("Cannot add member of other team!");
+//			return false;			
+//		}
+//	}
 
 	public void listTeamMembers() {
 		for (AbstractHero hero : heroesList) {
