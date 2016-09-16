@@ -1,6 +1,8 @@
 package com.sda.teams;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
 import com.sda.superheroes.AbstractHero;
 import com.sda.superheroes.SuperHero;
@@ -55,6 +57,21 @@ public class Team {
 		}
 	}
 
+	public AbstractHero getRandomHero() {
+		return heroesList.get(new Random().nextInt(getTeamSize()));
+	}
+	
+	public void removeHeroFromTeam(AbstractHero hero) {
+		Iterator<AbstractHero> heroIterator = heroesList.iterator();
+		while (heroIterator.hasNext()) {
+			AbstractHero abstractHero = (AbstractHero) heroIterator.next();
+			if(abstractHero.equals(hero)) {
+				heroIterator.remove();
+				break;
+			}
+		}
+	}
+	
 	public void listTeamMembers() {
 		for (AbstractHero hero : heroesList) {
 			System.out.println(hero.getName());

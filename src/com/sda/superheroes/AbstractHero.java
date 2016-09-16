@@ -3,7 +3,6 @@ package com.sda.superheroes;
 import com.sda.teams.TeamType;
 
 public abstract class AbstractHero {
-	
 	private String name;
 	private HeroStatistics stats;
 	private TeamType team;
