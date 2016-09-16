@@ -55,21 +55,14 @@ public class Team {
 		}
 	}
 
-	// public boolean addHeroToTeam(AbstractHero hero) {
-	// if(hero.getTeam().equals(type)) {
-	// heroesList.add(hero);
-	// updateTeamSide(hero);
-	// return true;
-	// } else {
-	// System.out.println("Cannot add member of other team!");
-	// return false;
-	// }
-	// }
-
 	public void listTeamMembers() {
 		for (AbstractHero hero : heroesList) {
 			System.out.println(hero.getName());
 		}
+	}
+	
+	public int getTeamSize() {
+		return heroesList.size();
 	}
 
 	public int getTeamPower() {
@@ -77,5 +70,9 @@ public class Team {
 			teamPower += hero.getPower();
 		}
 		return teamPower;
+	}
+	
+	public TeamType getTeamType() {
+		return type;
 	}
 }

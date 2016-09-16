@@ -1,5 +1,6 @@
 package com.sda.tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -28,8 +29,9 @@ public class TeamUtilsTest {
 
 	@Test
 	public void testGenerateRedTeam() {
-//		Team redTeam = TeamUtils.generateRedTeam();
-		
+		Team randomTeam = TeamUtils.generateRedTeam();
+		assertTrue(TeamType.RED.equals(randomTeam.getTeamType()));
+		assertEquals(randomTeam.getTeamSize(), 10);
 	}
 
 }
