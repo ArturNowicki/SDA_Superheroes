@@ -35,4 +35,9 @@ public class HeroStatistics {
 	public void addToDefense(int defense) {
 		this.defense += defense;
 	}
+	
+	@Override
+	public String toString() {
+		return "h/a/d: " + health + "/" + attack + "/" + defense;
+	}
 }

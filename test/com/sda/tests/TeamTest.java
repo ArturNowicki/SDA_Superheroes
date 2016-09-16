@@ -23,7 +23,7 @@ public class TeamTest {
 	@Test
 	public void testAddHeroToTeamSuccess() throws InvalidHeroTeamException {
 		Team team = new Team(TeamType.RED);
-		team.addHeroToTeam(HeroCreator.createHeroWithDefaultStats("Artur", TeamType.RED));
+		team.addHeroToTeam(HeroCreator.createVillainWithDefaultStats("Artur", TeamType.RED));
 	}
 
 	@Test

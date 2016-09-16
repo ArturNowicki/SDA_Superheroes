@@ -38,6 +38,6 @@ public abstract class AbstractHero {
 		return team;
 	}
 
-	public abstract double getPower();
+	public abstract int getPower();
 	
 }

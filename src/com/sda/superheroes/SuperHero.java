@@ -9,7 +9,7 @@ public class SuperHero extends AbstractHero {
 	}
 
 	@Override
-	public double getPower() {
+	public int getPower() {
 		return (this.getStats().getAttack() + this.getStats().getDefense()) * this.getStats().getHealth();
 	}
 

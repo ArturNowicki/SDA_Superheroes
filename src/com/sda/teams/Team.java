@@ -7,12 +7,12 @@ import com.sda.superheroes.SuperHero;
 import com.sda.superheroes.Villain;
 
 public class Team {
-	
+
 	private TeamType type;
 	private ArrayList<AbstractHero> heroesList;
 	private int teamPower;
 	private Side teamSide;
-	
+
 	public Team(TeamType type) {
 		this.type = type;
 		heroesList = new ArrayList<AbstractHero>();
@@ -20,12 +20,25 @@ public class Team {
 		teamSide = Side.UNKNOWN;
 	}
 
-	private void updateTeamSide(AbstractHero hero) {
-		if(hero instanceof Villain) {
-			teamSide = Side.EVIL;
+	private void updateTeamSide() {
+		int heroesBanalce = 0;
+		for (AbstractHero hero : heroesList) {
+			if (hero instanceof Villain) {
+				heroesBanalce--;
+			} else if (hero instanceof SuperHero) {
+				heroesBanalce++;
+			}
 		}
-		if(hero instanceof SuperHero) {
+		switch (Integer.signum(heroesBanalce)) {
+		case (1):
 			teamSide = Side.GOOD;
+			break;
+		case (-1):
+			teamSide = Side.EVIL;
+			break;
+		case (0):
+			teamSide = Side.UNKNOWN;
+			break;
 		}
 	}
 
@@ -34,31 +47,31 @@ public class Team {
 	}
 
 	public void addHeroToTeam(AbstractHero hero) throws InvalidHeroTeamException {
-		if(hero.getTeam().equals(type)) {
+		if (hero.getTeam().equals(type)) {
 			heroesList.add(hero);
-			updateTeamSide(hero);
+			updateTeamSide();
 		} else {
 			throw new InvalidHeroTeamException("Cannot add member of other team!");
 		}
 	}
 
-//	public boolean addHeroToTeam(AbstractHero hero) {
-//		if(hero.getTeam().equals(type)) {
-//			heroesList.add(hero);
-//			updateTeamSide(hero);
-//			return true;
-//		} else {
-//			System.out.println("Cannot add member of other team!");
-//			return false;			
-//		}
-//	}
+	// public boolean addHeroToTeam(AbstractHero hero) {
+	// if(hero.getTeam().equals(type)) {
+	// heroesList.add(hero);
+	// updateTeamSide(hero);
+	// return true;
+	// } else {
+	// System.out.println("Cannot add member of other team!");
+	// return false;
+	// }
+	// }
 
 	public void listTeamMembers() {
 		for (AbstractHero hero : heroesList) {
 			System.out.println(hero.getName());
 		}
 	}
-	
+
 	public int getTeamPower() {
 		for (AbstractHero hero : heroesList) {
 			teamPower += hero.getPower();

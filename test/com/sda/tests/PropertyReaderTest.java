@@ -13,5 +13,6 @@ public class PropertyReaderTest {
 		System.out.println("Hero healty is: "+System.getProperty("config.superHeroBaseHealth"));
 		System.out.println("Hero attack is: "+System.getProperty("config.superHeroBaseAttack"));
 		System.out.println("Hero defense is: "+System.getProperty("config.superHeroBaseDefence"));
+		System.out.println("Default randomization range is: "+System.getProperty("config.randomizationRange"));
 	}
 }
